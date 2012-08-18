@@ -1,0 +1,12 @@
+#sidebar-tree, #sidebar-tree ul {
+	list-style-type: none;
+}
+
+#sidebar-tree ul {
+	margin-left: 20px;
+}
+
+#sidebar-tree > li {
+	margin-bottom: 6px;
+}
+

@@ -1,0 +1,12 @@
+{
+    "minimum-stability": "dev",
+    "require": {
+        "silex/silex": "1.0.*",
+	    "twig/twig": "1.*",
+	    "fate/Silex-Extensions": "*",
+	    "knplabs/knp-markdown-bundle": "*"
+    },
+    "autoload": {
+        "psr-0": {"Gnosis": "src/"}
+    }
+}

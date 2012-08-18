@@ -1,0 +1,54 @@
+
+{% macro list(files, currentFiles, maxLevel, level) %}
+{% spaceless %}
+{% for file in files %}
+	<li {% if file.children is iterable %}class="has-children"{% endif %}>
+		<a href="{{ file.filename }}">{{ file.title | title }}</a>
+	{% if file.children is iterable and (level+1 < maxLevel or file.filename in currentFiles )%}
+		<ul>
+		{{ _self.list(file.children, currentFiles, maxLevel, level+1) }}
+		</ul>
+	{% endif %}
+	</li>
+{% endfor %}
+{% endspaceless %}
+{% endmacro %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Gnosis</title>
+		<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/assets/css/base.css" />
+		<script src="/assets/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="#">Gnosis</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span4">
+				<ul id="sidebar-tree">
+					{{ _self.list(files, currentFiles, 2) }}
+				</ul>
+			</div>
+			<div class="span8">
+
+			<ul class="breadcrumb">
+				{% for crumb in breadcrumbs %}
+				<li>
+					<a href="{{crumb.url}}">{{crumb.title | title}}</a> <span class="divider">/</span>
+				</li>
+				{% endfor %}
+				<li class="active">{{ finalBreadcrumb.title | title }}</li>
+			</ul>
+
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</body>
+</html>
