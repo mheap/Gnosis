@@ -3,6 +3,8 @@ Gnosis
 
 Gnosis is a PHP powered markdown rendering app. ```Gnosis``` is the Greek word for ```knowledge```. The name came out of the fact that I developed the app with the intention of acting as a knowledge base for [Tweetdig](http://tweetdig.com) before realising that it could be used for displaying any markdown files.
 
+See a working version [here](http://gnosis.michaelheap.com/).
+
 <a href="http://michaelheap.com/wp-content/uploads/2012/08/gnosis.png"><img src="http://michaelheap.com/wp-content/uploads/2012/08/gnosis.png" alt="" title="gnosis" width="962" height="726" class="aligncenter size-full wp-image-382" /></a>
 
 # Installation
