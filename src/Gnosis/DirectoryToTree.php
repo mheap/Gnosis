@@ -37,6 +37,11 @@ class DirectoryToTree {
 			$filenames[] = $fileinfo->getRelativePathname();
 	    }
 
+	    // Sort the results. Should probably use an iterator for this
+	    usort($filenames, function($a, $b){
+	    	return $a > $b ? 1 : -1;
+	    });
+
 	    $tb = new \Gnosis\DirectoryToTree\TreeBuilder($filenames);
 	    return $tb->getTree();
 	}
