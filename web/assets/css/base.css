@@ -1,12 +1,14 @@
-#sidebar-tree, #sidebar-tree ul {
-	list-style-type: none;
+@media (min-width:979px){
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
 }
 
-#sidebar-tree ul {
-	margin-left: 20px;
+}
+.sidebar-nav {
+	padding: 9px 0;
 }
 
-#sidebar-tree > li {
-	margin-bottom: 6px;
+.sidebar-nav ul > li {
+	margin-left: 10px;
 }
-
