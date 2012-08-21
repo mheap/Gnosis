@@ -1,12 +1,12 @@
 
-{% macro list(files, currentFiles, maxLevel, level) %}
+{% macro list(files, currentPage, currentFiles, maxLevel, level) %}
 {% spaceless %}
 {% for file in files %}
-	<li class="{% if file.children is iterable %}has-children{% endif %}">
-		<a href="{{ file.filename }}">{{ file.title | title }}</a>
+	<li class="{% if file.children is iterable %}has-children{% endif %} {% if currentPage.url == file.filename %}active{% endif %}">
+		<a href="{{ file.filename }}">{{ file.title | title }} </a>
 	{% if file.children is iterable and (level+1 < maxLevel or (file.filename in currentFiles and maxLevel > 0) )%}
-		<ul>
-		{{ _self.list(file.children, currentFiles, maxLevel, level+1) }}
+		<ul class="nav nav-list">
+		{{ _self.list(file.children, currentPage, currentFiles, maxLevel, level+1) }}
 		</ul>
 	{% endif %}
 	</li>
@@ -33,7 +33,7 @@
           <a class="brand" href="/">Gnosis</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              {{ _self.list(files, currentFiles, 0) }}
+              {{ _self.list(files, finalBreadcrumb, currentFiles, 0) }}
             </ul>
           </div>
         </div>
@@ -46,7 +46,7 @@
 			<div class="span3">
 				<div class="well sidebar-nav">
 					<ul class="nav nav-list">
-						{{ _self.list(files, currentFiles, 2) }}
+						{{ _self.list(files, finalBreadcrumb, currentFiles, 2) }}
 					</ul>
 				</div>
 			</div>
