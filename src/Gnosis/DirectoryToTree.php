@@ -77,7 +77,7 @@ class DirectoryToTree {
 		}
 
 		// Strip off any ending .md|.markdown|.txt file endings
-		$v = preg_replace("/\.(md|markdown|txt)$/", "", $v);
+        $v = preg_replace("/\.(md|markdown|txt)(\/|$)/", "$2", $v);
 		return $v;
 	}
 }
