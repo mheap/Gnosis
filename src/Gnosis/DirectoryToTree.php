@@ -34,7 +34,10 @@ class DirectoryToTree {
 		$iterator->getInnerIterator()->setInfoClass('Gnosis\DirectoryToTree\SplFileInfo');
 		$filenames = array();
 	    foreach ($iterator as $fileinfo) {
-			$filenames[] = $fileinfo->getRelativePathname();
+			$file = $fileinfo->getRelativePathname();
+			$endFile = end(explode("/", $file));
+			if ($endFile == ".." || $endFile == "."){ continue; }
+			$filenames[] = $file;
 	    }
 
 	    // Sort the results. Should probably use an iterator for this
